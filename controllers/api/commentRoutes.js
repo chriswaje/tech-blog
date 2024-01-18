@@ -1,0 +1,18 @@
+const router = require('express').Router();
+const { Comment } = require('../../models/');
+
+// route for users to create a new comment for a post
+router.post('/', async (req, res) => {
+  try {
+    // creates new data using the Comment model from database. 
+    const newComment = await Comment.create({
+      ...req.body,
+      userId: req.session.user_id,
+    });
+    res.json(newComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
