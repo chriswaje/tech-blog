@@ -6,7 +6,7 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
-    // creating new user saves a session for users to stay logged in using associated data about the user.
+    // create new user saves a session for users to stay logged in using associated data about the user.
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
