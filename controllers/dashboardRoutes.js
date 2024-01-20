@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../models');
 const { withAuth } = require('../utils/withAuth');
 
-// renders the dashboard if a user is logged in
+// render the dashboard if a user is logged in
 router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
