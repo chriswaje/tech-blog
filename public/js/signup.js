@@ -1,5 +1,3 @@
-const { application } = require("express");
-
 const signupFormHandler = async function (event) {
     event.preventDefault();
 
