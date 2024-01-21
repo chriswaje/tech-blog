@@ -6,7 +6,6 @@ router.post('/', async (req, res) => {
   const body = req.body;
 
   try {
-    // creates a new post using Post model from database. spread operator used to associated all related properties into our object
     const newPost = await Post.create({ ...body, userId: req.session.user_id });
     res.json(newPost);
   } catch (err) {
