@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models/');
-const { withAuth } = require('../utils/withAuth');
+const { withAuth, withoutAuth } = require('../utils/withAuth');
 
 // route for a GET request to render posts if a user is logged in
 router.get('/', async (req, res) => {
@@ -43,7 +43,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // route for users to login
-router.get('/login', (req, res) => {
+router.get('/login', withoutAuth, (req, res) => {
   try {
     res.render('login');
   } catch (err) {
@@ -52,7 +52,7 @@ router.get('/login', (req, res) => {
 });
 
 // route for users to join
-router.get('/signup', (req, res) => {
+router.get('/signup', withoutAuth, (req, res) => {
   try {
     res.render('signup');
   } catch (err) {
