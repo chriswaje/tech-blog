@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { Post } = require('../../models/');
+const { apiAuth } = require('../../utils/withAuth');
 
 // route for users to create a new post
-router.post('/', async (req, res) => {
+router.post('/', apiAuth, async (req, res) => {
   const body = req.body;
 
   try {
@@ -14,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 
 // route for users to update an exists post that they created
-router.put('/:id', async (req, res) => {
+router.put('/:id', apiAuth, async (req, res) => {
   try {
     const [affectedRows] = await Post.update(req.body, {
       where: {
@@ -34,7 +35,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // route for users to delete a post that they created
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', apiAuth, async (req, res) => {
   try {
     const [affectedRows] = Post.destroy({
       where: {

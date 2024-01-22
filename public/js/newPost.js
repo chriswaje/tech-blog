@@ -10,7 +10,7 @@ const newPostHandler = async function (event) {
             title,
             body
         }),
-        hedaers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
