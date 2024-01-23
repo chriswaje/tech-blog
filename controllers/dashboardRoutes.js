@@ -31,27 +31,4 @@ router.get('/new', withAuth, (req, res) => {
   });
 });
 
-//   render view for a post edit onto the dashboard when a user is logged in
-router.get('/edit/:id', withAuth, async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id);
-
-
-    if (postData) {
-      const post = postData.get({ plain: true });
-
-
-      res.render('editPost', {
-        dashboard: true,
-        post,
-        loggedIn: req.session.logged_in,
-      });
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
