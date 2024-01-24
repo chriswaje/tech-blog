@@ -14,26 +14,6 @@ router.post('/', apiAuth, async (req, res) => {
   }
 });
 
-// route for users to update an exists post that they created
-router.put('/:id', apiAuth, async (req, res) => {
-  try {
-    const [affectedRows] = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    // if there are any updates, end function successfully
-    if (affectedRows > 0) {
-      res.status(200).end();
-    } else {
-      res.status(404).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // route for users to delete a post that they created
 router.delete('/:id', apiAuth, async (req, res) => {
   try {
