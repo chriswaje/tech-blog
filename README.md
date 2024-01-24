@@ -20,6 +20,7 @@ Handlebars for view templates used the project. Bycrypt for password hashing. Ex
 
 ## Link(s)
 
+https://cw-tech-blog-708e9a3dff69.herokuapp.com/ (Link to deployed application)
 https://github.com/chriswaje/tech-blog (Link to GitHub repository)
 
 ## Image(s)
